@@ -4,7 +4,7 @@ tier: capability          # primitive | capability | blueprint
 maturity: experimental    # experimental | stable | deprecated
 description: Identity Platform project configuration with sign-in providers, authorized domains, MFA state and blocking functions
 owners: [platform]
-upstream: null            # e.g. "terraform-aws-modules/s3-bucket/aws 5.17.0"
-pairs_with: null          # e.g. "terraform-google-gcs-bucket"
+upstream: null
+pairs_with: terraform-aws-cognito-user-pool
 registry_name: terraform-google-identity-platform
 deprecated: null          # { removal: YYYY-MM-DD, replacement: <repo> }
