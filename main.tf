@@ -2,7 +2,9 @@
 # exists per project, so `name` only feeds outputs and is not part of any resource name.
 
 locals {
-  labels = merge(var.context.extra_tags, var.labels)
+  extra_labels = { for k, v in var.context.extra_tags :
+  substr(replace(lower(k), "/[^a-z0-9_-]/", "-"), 0, 63) => substr(replace(lower(v), "/[^a-z0-9_-]/", "-"), 0, 63) }
+  labels = merge(local.extra_labels, var.labels)
 
   authorized_domains = distinct(concat(
     ["localhost", "${var.project_id}.firebaseapp.com", "${var.project_id}.web.app"],
