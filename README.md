@@ -1,6 +1,6 @@
-# __NAME__
+# terraform-google-identity-platform
 
-__DESCRIPTION__
+Identity Platform project configuration with sign-in providers, authorized domains, MFA state and blocking functions
 
 ## Opinions
 
@@ -10,7 +10,7 @@ __DESCRIPTION__
 
 ```hcl
 module "this" {
-  source = "git::https://github.com/Olensys/__NAME__.git?ref=v1.0.0"
+  source = "git::https://github.com/Olensys/terraform-google-identity-platform.git?ref=v1.0.0"
 
   name = "example"
   context = {
