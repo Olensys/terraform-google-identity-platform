@@ -12,14 +12,20 @@ Identity Platform project configuration with sign-in providers, authorized domai
 - Blocking functions (`beforeCreate`, `beforeSignIn`) never receive the caller's ID, access or refresh tokens.
 - The Identity Toolkit API is enabled and left enabled on destroy.
 - Project singleton: Identity Platform allows one configuration per project, so `name` only feeds outputs and `labels` is informational (the configuration takes no labels). Creation fails if Identity Platform was already enabled in the project; import the existing configuration first: `terraform import 'module.<label>.google_identity_platform_config.this[0]' projects/<project_id>/config`.
+- `context.extra_tags` keys and values are normalised to valid GCP label syntax (lowercase, `[^a-z0-9_-]` → `-`, 63 chars); `labels` are applied verbatim and win.
 
 ## Usage
 
 ```hcl
-module "this" {
-  source = "git::https://github.com/Olensys/terraform-google-identity-platform.git?ref=v1.0.0"
+module "naming" {
+  source  = "git::https://github.com/Olensys/terraform-null-naming.git?ref=v1.0.1"
+  context = var.context
+}
 
-  name       = "example"
+module "this" {
+  source = "git::https://github.com/Olensys/terraform-google-identity-platform.git?ref=v1.1.0"
+
+  name       = module.naming.name
   project_id = "my-project"
   context = {
     organization = "olensys"
@@ -28,6 +34,8 @@ module "this" {
     owner        = "platform"
     cost_center  = "eng"
   }
+
+  labels = module.naming.labels
 }
 ```
 
