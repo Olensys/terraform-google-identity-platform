@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/Olensys/terraform-google-identity-platform/compare/v1.1.0...v1.1.1) (2026-10-24)
+
+
+### Bug Fixes
+
+* **examples:** pin naming module to v1.0.1 ([7a8bb08](https://github.com/Olensys/terraform-google-identity-platform/commit/7a8bb0883c00ba3ec29ae1cf81413c92be52f67b))
+* run integration on change and weekly instead of nightly ([92269be](https://github.com/Olensys/terraform-google-identity-platform/commit/92269bec7e881db70dee4a1ee636c4eb363e3e70))
+
 ## 1.1.0
 
 ### Fixes
