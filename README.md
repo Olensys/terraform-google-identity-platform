@@ -43,6 +43,10 @@ module "this" {
 }
 ```
 
+## Testing
+
+The integration apply can run only once per project: Identity Platform cannot be disabled once enabled, so re-runs fail with INVALID_PROJECT_ID; promotion was based on one real apply.
+
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 

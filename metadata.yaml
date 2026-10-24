@@ -1,7 +1,7 @@
 name: terraform-google-identity-platform
 cloud: google          # aws | google | common
 tier: capability          # primitive | capability | blueprint
-maturity: experimental    # experimental | stable | deprecated
+maturity: stable    # promoted on one real apply: project-singleton resource, see README
 description: Identity Platform project configuration with sign-in providers, authorized domains, MFA state and blocking functions
 owners: [platform]
 upstream: null
