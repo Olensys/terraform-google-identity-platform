@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/Olensys/terraform-google-identity-platform/compare/v1.1.1...v1.1.2) (2026-10-24)
+
+
+### Bug Fixes
+
+* **examples:** unique application slug so concurrent integration runs do not collide ([#2](https://github.com/Olensys/terraform-google-identity-platform/issues/2)) ([0096d71](https://github.com/Olensys/terraform-google-identity-platform/commit/0096d71de07d3ff8e72e66deadb87998d7baa149))
+
 ## [1.1.1](https://github.com/Olensys/terraform-google-identity-platform/compare/v1.1.0...v1.1.1) (2026-10-24)
 
 
