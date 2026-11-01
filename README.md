@@ -45,7 +45,17 @@ module "this" {
 
 ## Testing
 
-The integration apply can run only once per project: Identity Platform cannot be disabled once enabled, so re-runs fail with INVALID_PROJECT_ID; promotion was based on one real apply.
+The integration workflow only plans `examples/minimal` against the shared test project. Identity Platform cannot be disabled once enabled, so an apply succeeds only once per project: destroy removes the configuration from state only, and every later apply fails with `INVALID_PROJECT_ID : Identity Platform has already been enabled for this project`. The test cannot adopt the existing configuration either, because `terraform test` loads the example as a child module and import blocks are only allowed in the root module. A preflight run reads the project (`tests/preflight`) so the plan still fails when the workflow's credentials do not reach Google Cloud. Promotion was based on one real apply.
+
+To verify a real apply by hand against a project where Identity Platform is already enabled, import the configuration first, then apply and destroy; both resources are removed from state only (the API stays enabled, the configuration cannot be deleted):
+
+```bash
+cd examples/minimal
+terraform init
+terraform import -var project_id=<project_id> 'module.this.google_identity_platform_config.this[0]' projects/<project_id>/config
+terraform apply -var project_id=<project_id>
+terraform destroy -var project_id=<project_id>
+```
 
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
