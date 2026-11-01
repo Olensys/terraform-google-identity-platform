@@ -9,6 +9,21 @@
 # a child module ("Import blocks are only allowed in the root module"), and the module
 # itself must stay import-free so callers can use it as a child module. The real
 # apply is verified manually once per project; see "Testing" in README.md.
+
+# Reads the project during plan: fails unless the credentials reach Google Cloud.
+run "preflight" {
+  command = plan
+
+  module {
+    source = "./tests/preflight"
+  }
+
+  assert {
+    condition     = can(regex("^[0-9]+$", output.project_number))
+    error_message = "The test project could not be read with the workflow's credentials."
+  }
+}
+
 run "plan_minimal" {
   command = plan
 
