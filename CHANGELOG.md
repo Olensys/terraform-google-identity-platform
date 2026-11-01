@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.3](https://github.com/Olensys/terraform-google-identity-platform/compare/v1.1.2...v1.1.3) (2026-11-01)
+
+
+### Bug Fixes
+
+* **tests:** plan-only integration run for the project-singleton Identity Platform config ([#5](https://github.com/Olensys/terraform-google-identity-platform/issues/5)) ([334f21c](https://github.com/Olensys/terraform-google-identity-platform/commit/334f21c0099f5db533fbd4ad72d1240c746303ee))
+
 ## [1.1.2](https://github.com/Olensys/terraform-google-identity-platform/compare/v1.1.1...v1.1.2) (2026-10-24)
 
 
